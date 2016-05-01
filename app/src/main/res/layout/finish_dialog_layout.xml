@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/end1_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/end_1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp" >
+
+            <ImageView
+                android:id="@+id/advice_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/advice_" />
+
+            <ImageView
+                android:id="@+id/end2_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/advice_img"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/end_2" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/end3_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/end_3" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="단통법 앱을 종료하시겠습니까?"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:id="@+id/bottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#ff0000"
+            android:textColor="#fff"
+            android:text="예" />
+
+        <Button
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:id="@+id/adviceButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#ff0000"
+            android:textColor="#fff"            
+            android:text="전화상담" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#ff0000"
+            android:textColor="#fff"            
+            android:text="아니오" />
+    </LinearLayout>
+
+</LinearLayout>

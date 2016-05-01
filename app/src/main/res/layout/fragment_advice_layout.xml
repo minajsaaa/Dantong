@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/advice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:layout_height="wrap_content" >
+        
+        <Button
+            android:paddingRight="1dp"
+            android:layout_marginRight="1dp"
+            android:id="@+id/adviceButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+			android:background="#ff0000"
+            android:textColor="#fff"
+            android:text="상담신청" />
+        
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+			android:background="#ff0000"
+            android:textColor="#fff"            
+            android:text="닫기" />        
+        
+    </LinearLayout>
+        
+</RelativeLayout>

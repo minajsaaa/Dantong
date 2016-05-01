@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:gravity="center"
+    android:orientation="vertical"    
+    tools:context="com.goodmorningrainbow.dantongapp.PaneltyPopupActivity">
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_penalty_bg"
+        android:gravity="center"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingTop="17dp" >
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_00" >
+
+                <TextView
+                    android:id="@+id/pTextView00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="89,100원"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_01" >
+
+                <TextView
+                    android:id="@+id/pTextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="89,100원"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_02" >
+
+                <TextView
+                    android:id="@+id/pTextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_03" >
+
+                <TextView
+                    android:id="@+id/pTextView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_04" >
+
+                <TextView
+                    android:id="@+id/pTextView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_penalty_05" >
+
+                <TextView
+                    android:id="@+id/pTextView05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+</LinearLayout>    

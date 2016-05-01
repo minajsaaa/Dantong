@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:gravity="center"
+    android:orientation="vertical"    
+    tools:context="com.goodmorningrainbow.dantongapp.SelectPaySystemPopupActivity">
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_data"
+        android:layout_margin="20dp">
+        
+        <LinearLayout
+            android:id="@+id/selPayCenterLayout"            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="50dp"
+            android:orientation="horizontal">
+            
+            <RelativeLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"                
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"                                
+                android:background="@drawable/popup_data_1">
+                
+                <TextView
+                    android:id="@+id/voiceTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="40dp"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/popup_font_size"
+                    android:typeface="sans"/>
+                
+            </RelativeLayout>
+            
+            <RelativeLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"                
+                android:background="@drawable/popup_data_2">
+                
+                <TextView
+                    android:id="@+id/letterTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="40dp"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/popup_font_size"
+                    android:typeface="sans" />
+                
+            </RelativeLayout>
+            
+            <RelativeLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/popup_data_3">
+                
+                <TextView
+                    android:id="@+id/dataTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="40dp"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/popup_font_size"
+                    android:typeface="sans" />
+                
+            </RelativeLayout>
+                        
+        </LinearLayout>
+
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selPayCenterLayout"
+            android:layout_margin="7dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"            
+            android:background="@drawable/popup_data_4">
+            
+            <TextView
+                android:id="@+id/basePriceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"                
+                android:textColor="#ffffff"
+                android:textSize="@dimen/popup_font_size"
+                android:typeface="sans"/>
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+</LinearLayout>    

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" 
+    tools:context="com.goodmorningrainbow.dantongapp.SelectManuPopupActivity" >
+    
+    <RelativeLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_bg"
+        android:layout_centerInParent="true" >
+
+        <Button
+            android:id="@+id/mSSBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/popup_menuf_ss_btn"
+            android:gravity="left" />
+
+        <Button
+            android:id="@+id/mLGBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="45dp"
+            android:layout_toRightOf="@id/mSSBtn"
+            android:background="@drawable/popup_menuf_lg_btn" />
+
+        <Button
+            android:id="@+id/mPEBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mSSBtn"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/popup_menuf_pt_btn" />
+
+        <Button
+            android:id="@+id/mETBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mLGBtn"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/mPEBtn"
+            android:background="@drawable/popup_menuf_et_btn" />
+        
+    </RelativeLayout>
+    
+</RelativeLayout>   

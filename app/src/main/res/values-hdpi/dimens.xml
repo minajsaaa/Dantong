@@ -1,0 +1,4 @@
+<resources>   
+    <dimen name="font_size">16sp</dimen>
+    <dimen name="size_35">25dp</dimen>
+</resources>

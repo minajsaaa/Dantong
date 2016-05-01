@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical"
+        android:weightSum="100" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9.375"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/rightBackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/selector_right_back_btn" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="42.96875"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/detailImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY" />
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="42.96875"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/ratingBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_rating_btn" />
+
+                <Button
+                    android:id="@+id/compareBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ratingBtn"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_compare_btn" />
+                
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#ffffff"
+                android:dividerHeight="0dp" 
+                android:cacheColorHint="#ffffff"/>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.6875"
+            android:orientation="vertical" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/comapreLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"                
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:weightSum="100">
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="52.34375"
+            android:background="#ffffff" 
+            android:visibility="invisible"/>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="42.96875" >
+
+            <ImageView
+                android:id="@+id/compareImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+            <Button
+                android:id="@+id/close_under"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/close_under"
+                android:visibility="gone" />
+            
+        </RelativeLayout>
+        
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.6875"
+            android:background="#00ffffff" />
+        
+    </LinearLayout>
+        
+</RelativeLayout>

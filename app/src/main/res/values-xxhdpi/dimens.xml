@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="popup_font_size">20sp</dimen>
+    <dimen name="today_font_size">7sp</dimen>
+    <dimen name="font_size">16sp</dimen>
+    <dimen name="first_margin_top">5dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="size_35">35dp</dimen>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical" 
+    tools:context="com.goodmorningrainbow.dantongapp.ShowAlertPopup" >
+    
+    <RelativeLayout 
+        android:id="@+id/showPopupLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="50dp">
+        
+        <TextView 
+            android:id="@+id/showPopupCostTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="30dp"            
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:typeface="sans"/>        
+            
+        <TextView
+            android:id="@+id/showPopupMonthlyTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:layout_below="@id/showPopupCostTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:typeface="sans"/>
+        
+    </RelativeLayout>    
+
+</RelativeLayout>    

@@ -1,0 +1,41 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="Theme.customDialog" parent="android:style/Theme.Translucent">
+        <item name="android:windowBackground">@drawable/translucent_background</item>        
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:colorForeground">#ffff</item>
+    </style>
+    
+    <style name="CustomSmallRatingBar" parent="@android:attr/ratingBarStyleSmall">
+        <item name="android:progressDrawable">@drawable/ratingbar_btn</item>
+        <item name="android:minHeight">13dp</item>
+        <item name="android:maxHeight">13dp</item>
+    </style>
+
+    <style name="CustomNormalRatingBar" parent="@android:attr/ratingBarStyle">
+        <item name="android:progressDrawable">@drawable/ratingbar_normal_btn</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:maxHeight">25dp</item>        
+    </style>
+
+</resources>
