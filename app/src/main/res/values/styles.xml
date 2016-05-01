@@ -25,7 +25,7 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:colorForeground">#ffff</item>
     </style>
-    
+
     <style name="CustomSmallRatingBar" parent="@android:attr/ratingBarStyleSmall">
         <item name="android:progressDrawable">@drawable/ratingbar_btn</item>
         <item name="android:minHeight">13dp</item>

@@ -76,7 +76,9 @@
 
                         <RatingBar
                             android:id="@+id/rating"
-                            style="@style/CustomSmallRatingBar"
+                            android:progressDrawable="@drawable/ratingbar_btn"
+                            android:minHeight="13dp"
+                            android:maxHeight="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"

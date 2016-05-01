@@ -11,4 +11,13 @@
     <string name="result_ok">덧글등록 완료 하였습니다.</string>
     <string name="result_cancel">덧글등록 실패 하였습니다.</string>
     <string name="monthly">%d개월 기준</string>
+
+
+    <string name="browser_download">다운로드가 시작되었습니다.</string>
+    <string name="browser_title">Browser</string>
+    <string name="permissions">사용자의 위치정보를 사용하고자 합니다</string>
+    <string name="accept">허용</string>
+    <string name="rejection">거부</string>
+    <string name="image_folder_name">yanolja</string>
+    <string name="android">android</string>
 </resources>

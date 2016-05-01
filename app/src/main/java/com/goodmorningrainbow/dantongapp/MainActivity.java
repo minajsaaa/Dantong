@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import kr.co.fingerpush.android.GCMFingerPushManager;
 import kr.co.fingerpush.android.NetworkUtility.NetworkDataListener;
+import nobug.webview.BrowserActivity;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import com.goodmorningrainbow.common.Const;
 import com.goodmorningrainbow.common.CustomViewPager;
 import com.goodmorningrainbow.common.PagerFragmentAdapter;
+import com.goodmorningrainbow.constant.UrlDefinition;
 import com.goodmorningrainbow.fragment.AdviceDetailFragment;
 import com.goodmorningrainbow.fragment.MainLeftFragment;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -53,19 +56,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
         
-        manager.setDevice(new NetworkDataListener() {			
+        manager.setDevice(new NetworkDataListener() {
 			@Override
 			public void onError(String code, String errorMessage) {
-				Log.e("", "errorMessage ::: "+errorMessage);
+				Log.e("", "errorMessage ::: " + errorMessage);
 			}
-			
+
 			@Override
-			public void onComplete(String code, String resultMessage,ArrayList<?> DataList, Integer TotalArticleCount,Integer CurrentPageNo) {
+			public void onComplete(String code, String resultMessage, ArrayList<?> DataList, Integer TotalArticleCount, Integer CurrentPageNo) {
 				Log.e("", "result code ::: " + code);
 				Log.e("", "result Message ::: " + resultMessage);
 				Toast.makeText(MainActivity.this, resultMessage, Toast.LENGTH_SHORT).show();
 			}
-			
+
 			@Override
 			public void onCancel() {
 			}
@@ -82,7 +85,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		viewPager = (CustomViewPager)findViewById(R.id.mainViewPager);
 		viewPager.setPagingDisabled();
 		viewPager.setAdapter(mAdapter);
-		viewPager.setScrollDurationFactor(4);
+
+		Intent intent = new Intent(MainActivity.this, BrowserActivity.class);
+		intent.putExtra("url", UrlDefinition.PhonePlus + "it_id=1447734016");
+		startActivity(intent);
 	}	
 	
 	@Override
