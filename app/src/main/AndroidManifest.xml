@@ -72,6 +72,12 @@
             android:theme="@style/Theme.customDialog"></activity>
 
         <activity
+            android:name=".PurchasePopupActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.customDialog"></activity>
+
+        <activity
             android:name=".SelectMonthlyPopupActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"

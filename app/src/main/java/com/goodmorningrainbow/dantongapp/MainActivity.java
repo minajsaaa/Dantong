@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.co.fingerpush.android.GCMFingerPushManager;
 import kr.co.fingerpush.android.NetworkUtility.NetworkDataListener;
+import nobug.webview.Browser;
 import nobug.webview.BrowserActivity;
 
 import android.app.Activity;
@@ -28,6 +29,7 @@ import com.goodmorningrainbow.common.PagerFragmentAdapter;
 import com.goodmorningrainbow.constant.UrlDefinition;
 import com.goodmorningrainbow.fragment.AdviceDetailFragment;
 import com.goodmorningrainbow.fragment.MainLeftFragment;
+import com.goodmorningrainbow.model.PhoneListDT;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -85,11 +87,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		viewPager = (CustomViewPager)findViewById(R.id.mainViewPager);
 		viewPager.setPagingDisabled();
 		viewPager.setAdapter(mAdapter);
-
-		Intent intent = new Intent(MainActivity.this, BrowserActivity.class);
-		intent.putExtra("url", UrlDefinition.PhonePlus + "it_id=1447734016");
-		startActivity(intent);
-	}	
+		viewPager.setOffscreenPageLimit(4);
+	}
 	
 	@Override
 	protected void onStart() {
@@ -102,6 +101,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		super.onStop();
 		GoogleAnalytics.getInstance(this).reportActivityStop(this);
 	}
+
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -120,6 +120,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				MainLeftFragment.getInstance().setResultFromPriceList();						
 			} else if(requestCode == Const.SELECT_MONTHLY_LIST_RESULT_CODE){				
 				MainLeftFragment.getInstance().setResultFromMonthlyList(data);
+			} else if(requestCode == Const.SELECT_ADVICE_RESULT_CODE) {
+				int value = data.getIntExtra("select", 0);
+				if( value == 0 ) {
+					moveToPage(Const.PAGE_ADVICE);
+				} else {
+					Log.e("rrobbie", Const.PHONE_ID);
+					String url = UrlDefinition.PhonePlus + "id_id=" + Const.PHONE_ID;
+					Intent intent = new Intent(MainActivity.this, BrowserActivity.class);
+					intent.putExtra("url", url);
+					startActivity(intent);
+				}
 			}
 		}
 	}

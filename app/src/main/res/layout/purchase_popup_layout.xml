@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:background="@drawable/popup_halbu_bg"
+        android:gravity="center">
+        
+        <Button 
+            android:id="@+id/adviceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="상담하기"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:background="@drawable/popup_data_4"/>
+        
+        <Button 
+            android:id="@+id/requestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="신청하기"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:background="@drawable/popup_data_4"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

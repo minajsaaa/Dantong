@@ -14,6 +14,7 @@ public class Const {
     public final static int SELECT_PRICE_LIST_RESULT_CODE = 30;
     public final static int CLUB_SELECT_PRICE_RESULT_CODE = 40;
     public final static int SELECT_MONTHLY_LIST_RESULT_CODE = 50;
+    public final static int SELECT_ADVICE_RESULT_CODE = 60;
     
     public static int SELECT_AGENCY = 0;
     public static String SELECT_MANUF = "1";
@@ -22,6 +23,7 @@ public class Const {
     public static ArrayList<PriceListDT> PRICE_LIST_ARRAY = null;
     
     public static int PHONE_POSITION = 0;
+    public static String PHONE_ID = "";
     public static int PRICE_POSITION = 0;
     
     public final static String SK_BASE_PRICE_ID = "60";

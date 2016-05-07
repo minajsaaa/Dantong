@@ -66,6 +66,7 @@ import com.goodmorningrainbow.common.WeakRefHandler;
 import com.goodmorningrainbow.dantongapp.ClubAlertPopupActivity;
 import com.goodmorningrainbow.dantongapp.MainActivity;
 import com.goodmorningrainbow.dantongapp.PaneltyPopupActivity;
+import com.goodmorningrainbow.dantongapp.PurchasePopupActivity;
 import com.goodmorningrainbow.dantongapp.R;
 import com.goodmorningrainbow.dantongapp.SelectManuPopupActivity;
 import com.goodmorningrainbow.dantongapp.SelectMonthlyPopupActivity;
@@ -319,8 +320,6 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		monthly = 24;
 		clubMnt = 0;
 
-		Log.d("rrobbie", "init");
-		
 		detailTxtInit();
 		
 		deviceModeBtn.setBackgroundResource(R.drawable.main_money_select1);
@@ -328,8 +327,6 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		deviceModeBtn.setEnabled(false);
 		contrctModeBtn.setEnabled(false);
 		showMode = DEVICE_MODE;
-		
-		Log.d("rrobbie", "main Left");
 	}
 	
 	// 하단 상세정보 초기화
@@ -501,11 +498,11 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 
 		// 요금제 선택 버튼
 		cSelBtn.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// new GetPriceListDataTask().execute();
 				showPriceListPopup();
+				Log.e("rrobbie", "요금제 선택");
 			}
 		});
 
@@ -519,7 +516,7 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 							|| Const.SELECT_AGENCY == Const.TELECOM_KT
 							|| Const.SELECT_AGENCY == Const.TELECOM_LG) {
 						Intent intent = new Intent(mActivity, MonthlyPopupActivity.class);
-						mActivity.startActivityForResult(intent, Const.SELECT_MONTHLY_LIST_RESULT_CODE);						
+						mActivity.startActivityForResult(intent, Const.SELECT_MONTHLY_LIST_RESULT_CODE);
 					} else {
 						Toast.makeText(mActivity, "적용되지 않는 통신사 입니다.", Toast.LENGTH_SHORT).show();
 					}
@@ -577,7 +574,6 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 				if (isShowMonthlyPP) {
 					isShowMonthlyPP = false;
 					mTable04.setBackgroundResource(R.drawable.main_table_04);
-
 					refresh();
 
 				} else {
@@ -915,7 +911,15 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		Intent intent = new Intent(mActivity, SelectPriceListPopupActivity.class);
 		mActivity.startActivityForResult(intent, Const.SELECT_PRICE_LIST_RESULT_CODE);
 	}
-	
+
+	// 가격리스트 팝업 Activity
+	private void showPurchasePopup() {
+		Intent intent = new Intent(mActivity, PurchasePopupActivity.class);
+		mActivity.startActivityForResult(intent, Const.SELECT_ADVICE_RESULT_CODE);
+	}
+	//	========================================================================================
+
+
 	private void inputReleCost() {
 		isShowEdit = true;
 		releTxt.setVisibility(View.GONE);
@@ -1268,14 +1272,13 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 	private void showPhoneListPopup() {
 		Intent intent = new Intent(mActivity, SelectPhoneListPopupActivity.class);		
 		intent.putExtra("arraylist", phoneArray);
-		
-		
 		mActivity.startActivityForResult(intent, Const.SELECT_PHONE_LIST_RESULT_CODE);
 	}
 	
 	public void setResultFromPhonList() {
 		PhoneListDT listDT = phoneArray.get(Const.PHONE_POSITION);
-		
+		Const.PHONE_ID = listDT.getId();
+
 		pSelBtn.setText(listDT.getNameKor());
 		cSelBtn.setText("");
 		cSelBtn.setEnabled(true);
@@ -1658,51 +1661,15 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 	
 	public void setResultFromPriceList() {
 		Intent intent = new Intent(mActivity, SelectMonthlyPopupActivity.class);
-		startActivityForResult(intent, 1003);		
-		/*showDetailPrice();
-		ableLowsBtns();
-		
-		PriceListDT priceDT = priceArray.get(Const.PRICE_POSITION);
-		PhoneListDT phoneDT = phoneArray.get(Const.PHONE_POSITION);
-		
-		cSelBtn.setText(priceDT.getName()); //버튼에 요금제 TEXT삽입				
-		
-		phone_cost = Integer.parseInt(phoneDT.getCost()) - clubMnt; //출고가				
-		public_cost = 0; //공시지원금
-		
-		aSupportTxt.setText("0원");
-		
-		int defCost = Integer.parseInt(Const.PRICE_LIST_ARRAY.get(Const.PRICE_POSITION).getFcost());
-		//System.out.println("defCost : " + defCost);
-		setPublicCost(defCost);
-		
-		if(Const.SELECT_AGENCY == Const.TELECOM_SK && (priceDT.getId().equals("89") || priceDT.getId().equals("90"))) {
-			h_support_cost = 0;					
-			
-			if(priceDT.getId().equals("89")) monthly = 30;
-			
-			Intent intent = new Intent(mActivity, CostAlertPopupActivity.class);
-			intent.putExtra("id", Integer.parseInt(priceDT.getId()));
-			startActivity(intent);
-			
-		} else {
-			h_support_cost = (int)(public_cost * 0.15); //추가 지원금					
-		}
-		
-		refresh();*/
+		startActivityForResult(intent, 1003);
 	}
-	
-	public void showMonthlyPopup() {
-		Intent intent = new Intent(mActivity, SelectMonthlyPopupActivity.class);
-		startActivityForResult(intent, 1003);		
-	}
-	
+
 	// 요금제 상세보기
 	public void showDetailPrice() {
 		Intent intent = new Intent(mActivity, SelectPaySystemPopupActivity.class);
 		startActivityForResult(intent, 1004);		
 	}
-	
+
 	// 공시지원금 가져오기
 	public void setPublicCost(int defCost) {
 		if (Const.SELECT_AGENCY == Const.TELECOM_SK) {
@@ -2377,6 +2344,80 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		
 		isShowEdit = false;
 	}
+
+	private void updatePayment(Intent data) {
+		deviceModeBtn.setBackgroundResource(R.drawable.main_money_select1_push);
+		contrctModeBtn.setBackgroundResource(R.drawable.main_money_select2);
+		deviceModeBtn.setEnabled(true);
+		contrctModeBtn.setEnabled(true);
+		showMode = DEVICE_MODE;
+
+		monthly = data.getIntExtra("month", 24);
+
+		PriceListDT priceDT = priceArray.get(Const.PRICE_POSITION);
+		PhoneListDT phoneDT = phoneArray.get(Const.PHONE_POSITION);
+
+		cSelBtn.setText(priceDT.getName()); //버튼에 요금제 TEXT삽입
+
+		phone_cost = Integer.parseInt(phoneDT.getCost()) - clubMnt; //출고가
+		public_cost = 0; //공시지원금
+
+		aSupportTxt.setText("0원");
+
+		int defCost = Integer.parseInt(Const.PRICE_LIST_ARRAY.get(Const.PRICE_POSITION).getFcost());
+		setPublicCost(defCost);
+
+		h_support_cost = (int)(public_cost * 0.15); //추가 지원금
+		refresh();
+		showDetailPrice();
+		ableLowsBtns();
+	}
+
+	private void updateAccessory() {
+		isCloseAcc = true;
+		leftAni.setRepeatCount(0);
+		leftAni.setRepeatMode(Animation.ABSOLUTE);
+		leftAni.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				mAccessoryLayout.setVisibility(View.VISIBLE);
+				mAccessoryClose.setVisibility(View.VISIBLE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				mAccessoryLayout.setEnabled(true);
+				mAccessoryClose.setEnabled(true);
+			}
+		});
+
+		mAccessoryLayout.startAnimation(leftAni);
+
+		timer = new CountDownTimer(8000, 1000) {
+			@Override
+			public void onTick(long millisUntilFinished) {
+			}
+
+			@Override
+			public void onFinish() {
+				if(isCloseAcc) {
+					isCloseAcc = false;
+					closeAccImg();
+				}
+			}
+		}.start();
+
+		showPurchasePopup();
+	}
+
+	private void updateAdvice(Intent data) {
+		int value = data.getIntExtra("select", 0);
+	}
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -2384,90 +2425,11 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		
 		if(resultCode == Activity.RESULT_OK) {
 			if(requestCode == 1003) {
-				deviceModeBtn.setBackgroundResource(R.drawable.main_money_select1_push);
-				contrctModeBtn.setBackgroundResource(R.drawable.main_money_select2);
-				deviceModeBtn.setEnabled(true);
-				contrctModeBtn.setEnabled(true);
-				showMode = DEVICE_MODE;
-				
-				monthly = data.getIntExtra("month", 24);
-				
-				PriceListDT priceDT = priceArray.get(Const.PRICE_POSITION);
-				PhoneListDT phoneDT = phoneArray.get(Const.PHONE_POSITION);
-				
-				cSelBtn.setText(priceDT.getName()); //버튼에 요금제 TEXT삽입				
-				
-				phone_cost = Integer.parseInt(phoneDT.getCost()) - clubMnt; //출고가				
-				public_cost = 0; //공시지원금
-				
-				aSupportTxt.setText("0원");
-				
-				int defCost = Integer.parseInt(Const.PRICE_LIST_ARRAY.get(Const.PRICE_POSITION).getFcost());
-				//System.out.println("defCost : " + defCost);
-				setPublicCost(defCost);
-				
-				/*if(Const.SELECT_AGENCY == Const.TELECOM_SK && (priceDT.getId().equals("89") || priceDT.getId().equals("90"))) {
-					h_support_cost = 0;					
-					
-					if(priceDT.getId().equals("89")) monthly = 30;
-					
-					Intent intent = new Intent(mActivity, CostAlertPopupActivity.class);
-					intent.putExtra("id", Integer.parseInt(priceDT.getId()));
-					startActivity(intent);
-					
-				} else {
-					h_support_cost = (int)(public_cost * 0.15); //추가 지원금					
-				}*/
-				
-				h_support_cost = (int)(public_cost * 0.15); //추가 지원금
-				
-				refresh();
-				
-				showDetailPrice();
-				ableLowsBtns();
-				
+				updatePayment(data);
 			} else if(requestCode == 1004) {
-				
-				isCloseAcc = true;
-				leftAni.setRepeatCount(0);
-				leftAni.setRepeatMode(Animation.ABSOLUTE);
-				leftAni.setAnimationListener(new AnimationListener() {
-					
-					@Override
-					public void onAnimationStart(Animation animation) {
-						mAccessoryLayout.setVisibility(View.VISIBLE);
-						mAccessoryClose.setVisibility(View.VISIBLE);						
-					}
-					
-					@Override
-					public void onAnimationRepeat(Animation animation) {
-						
-					}
-					
-					@Override
-					public void onAnimationEnd(Animation animation) {
-						mAccessoryLayout.setEnabled(true);
-						mAccessoryClose.setEnabled(true);
-					}
-				});
-				
-				mAccessoryLayout.startAnimation(leftAni);
-				
-				timer = new CountDownTimer(8000, 1000) {
-					
-					@Override
-					public void onTick(long millisUntilFinished) {
-						
-					}
-					
-					@Override
-					public void onFinish() {
-						if(isCloseAcc) {
-							isCloseAcc = false;
-							closeAccImg();
-						}
-					}
-				}.start();
+				updateAccessory();
+			} else if( requestCode == 1005 ) {
+				updateAdvice(data);
 			}
 		}
 	}
