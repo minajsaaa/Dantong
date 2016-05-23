@@ -73,8 +73,6 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
         if( getIntent() != null ) {
             loadUrl(getIntent().getStringExtra("url"));
         }
-
-        showFileChooser();
     }
 
     //  ========================================================================================
