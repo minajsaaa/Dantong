@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.goodmorningrainbow.constant.UrlDefinition;
 import com.goodmorningrainbow.dantongapp.R;
 
 import java.io.ByteArrayOutputStream;
@@ -25,7 +27,7 @@ import nobug.helper.RequestHandler;
 
 public class BrowserActivity extends AppCompatActivity implements IBrowserClientEvent {
 
-    public static final String UPLOAD_URL = "http://simplifiedcoding.16mb.com/ImageUpload/upload.php";
+    public static final String UPLOAD_URL = UrlDefinition.FILE_UPLOAD;
     public static final String UPLOAD_KEY = "image";
     private int PICK_IMAGE_REQUEST = 1;
 
@@ -71,6 +73,8 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
         if( getIntent() != null ) {
             loadUrl(getIntent().getStringExtra("url"));
         }
+
+        showFileChooser();
     }
 
     //  ========================================================================================
@@ -103,7 +107,7 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
         @JavascriptInterface
         public void upload(String url) {
-//            showFileChooser(); or uploadImage();
+            showFileChooser();  //or uploadImage();
         }
 
     }
@@ -135,7 +139,7 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(BrowserActivity.this, "Uploading Image", "Please wait...",true,true);
+                loading = ProgressDialog.show(BrowserActivity.this, "업로드중입니다", "Please wait...",true,true);
             }
 
             @Override
@@ -147,20 +151,57 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
             @Override
             protected String doInBackground(Bitmap... params) {
-                Bitmap bitmap = params[0];
-                String uploadImage = getStringImage(bitmap);
+                try {
+                    Bitmap temp = params[0];
+                    Bitmap bitmap1 = resizeBitmapImage(temp, 1024);
+                    String uploadImage = getStringImage(bitmap1);
 
-                HashMap<String,String> data = new HashMap<>();
-                data.put(UPLOAD_KEY, uploadImage);
+                    Log.e("rrobbie", bitmap1.getWidth() + " / " + bitmap1.getHeight());
 
-                String result = rh.sendPostRequest(UPLOAD_URL,data);
+                    HashMap<String,String> data = new HashMap<>();
+                    data.put(UPLOAD_KEY, uploadImage);
 
-                return result;
+                    String result = rh.sendPostRequest(UPLOAD_URL,data);
+
+                    return result;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
         }
 
         UploadImage ui = new UploadImage();
         ui.execute(bitmap);
+    }
+
+    public Bitmap resizeBitmapImage(Bitmap source, int maxResolution) {
+        int width = source.getWidth();
+        int height = source.getHeight();
+        int newWidth = width;
+        int newHeight = height;
+        float rate = 0.0f;
+
+        if(width > height)
+        {
+            if(maxResolution < width)
+            {
+                rate = maxResolution / (float) width;
+                newHeight = (int) (height * rate);
+                newWidth = maxResolution;
+            }
+        }
+        else
+        {
+            if(maxResolution < height)
+            {
+                rate = maxResolution / (float) height;
+                newWidth = (int) (width * rate);
+                newHeight = maxResolution;
+            }
+        }
+
+        return Bitmap.createScaledBitmap(source, newWidth, newHeight, true);
     }
 
     //  =========================================================================================
@@ -175,6 +216,13 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
 //                imageView.setImageBitmap(bitmap);
+                Log.e("rrobbie", "bitmap : " + bitmap );
+
+                if( bitmap != null ) {
+                    uploadImage();
+                }
+
+                //  Toast.makeText(this, "업로드 되었습니다", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

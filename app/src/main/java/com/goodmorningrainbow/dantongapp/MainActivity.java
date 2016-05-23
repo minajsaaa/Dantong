@@ -111,11 +111,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			if(requestCode == Const.SELECT_MANUF_RESULT_CODE) {
 				Const.SELECT_MANUF = data.getStringExtra("manuf");
 				MainLeftFragment.getInstance().setPhoneListFromServer();
+
 			} else if(requestCode == Const.SELECT_PHONE_LIST_RESULT_CODE) {
 				Const.PHONE_POSITION = data.getIntExtra("position", 0);
 				MainLeftFragment.getInstance().setResultFromPhonList();								
 			} else if(requestCode == Const.CLUB_SELECT_PRICE_RESULT_CODE) {				
-				MainLeftFragment.getInstance().setResultFromClubPriceList(data);				
+				MainLeftFragment.getInstance().setResultFromClubPriceList(data);
+				Log.e("rrobbie", "CLUB_SELECT_PRICE_RESULT_CODE : " + data);
 			} else if(requestCode == Const.SELECT_PRICE_LIST_RESULT_CODE) {				
 				MainLeftFragment.getInstance().setResultFromPriceList();						
 			} else if(requestCode == Const.SELECT_MONTHLY_LIST_RESULT_CODE){				
@@ -125,8 +127,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				if( value == 0 ) {
 					moveToPage(Const.PAGE_ADVICE);
 				} else {
-					Log.e("rrobbie", Const.PHONE_ID);
-					String url = UrlDefinition.PhonePlus + "id_id=" + Const.PHONE_ID;
+					Log.e("rrobbie", Const.PHONE_ID + " / " + Const.SELECT_AGENCY);
+					String url = UrlDefinition.PhonePlus + "?key=" + Const.PHONE_ID + "&net=" + Const.SELECT_AGENCY;
 					Intent intent = new Intent(MainActivity.this, BrowserActivity.class);
 					intent.putExtra("url", url);
 					startActivity(intent);
