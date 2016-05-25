@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:background="@drawable/popup_halbu_bg"
+        android:background="@drawable/popup_purchase"
         android:gravity="center">
         
         <Button 
