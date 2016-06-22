@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -30,6 +31,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import com.goodmorningrainbow.common.Const;
 
@@ -59,8 +62,8 @@ public class TitleActivity extends Activity {
 		
 		mHandler = new Handler();
 		mHandler.postDelayed(mRunnable, 2000);
-    }
-    
+	}
+
     @Override
     protected void onDestroy() {
     	mHandler.removeCallbacks(mRunnable);

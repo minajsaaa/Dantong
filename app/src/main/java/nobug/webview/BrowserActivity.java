@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -29,6 +30,8 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
     public static final String UPLOAD_URL = UrlDefinition.FILE_UPLOAD;
     public static final String UPLOAD_KEY = "image";
+    public static final String TELEPHONE = "telephone";
+
     private int PICK_IMAGE_REQUEST = 1;
 
     private Uri filePath;
@@ -110,7 +113,6 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
     }
 
-
     //  ========================================================================================
 
     private void showFileChooser() {
@@ -122,7 +124,7 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 80, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
@@ -158,6 +160,7 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
                     HashMap<String,String> data = new HashMap<>();
                     data.put(UPLOAD_KEY, uploadImage);
+                    data.put(TELEPHONE, getPhoneNumber());
 
                     String result = rh.sendPostRequest(UPLOAD_URL,data);
 
@@ -171,6 +174,12 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
 
         UploadImage ui = new UploadImage();
         ui.execute(bitmap);
+    }
+
+    private String getPhoneNumber() {
+        TelephonyManager mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        String telephone = mTelephonyManager.getLine1Number();
+        return telephone;
     }
 
     public Bitmap resizeBitmapImage(Bitmap source, int maxResolution) {
@@ -213,14 +222,14 @@ public class BrowserActivity extends AppCompatActivity implements IBrowserClient
             filePath = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-//                imageView.setImageBitmap(bitmap);
-                Log.e("rrobbie", "bitmap : " + bitmap );
+
+                Log.e("rrobbie", "onActivityResult : " + bitmap );
 
                 if( bitmap != null ) {
                     uploadImage();
                 }
 
-                //  Toast.makeText(this, "업로드 되었습니다", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "업로드 되었습니다", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
