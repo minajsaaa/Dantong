@@ -102,7 +102,7 @@ public class MainRightFragment extends Fragment implements IOnHandlerMessage{
 	@Override
 	public void handleMessage(Message msg) {
 		if(phoneImg != null) {
-			
+
 			compareImg.setImageBitmap(phoneImg);
 			
 			upAni.setRepeatCount(0);
@@ -111,7 +111,7 @@ public class MainRightFragment extends Fragment implements IOnHandlerMessage{
 				
 				@Override
 				public void onAnimationStart(Animation animation) {
-				    compareLayout.setVisibility(View.VISIBLE);	
+				    compareLayout.setVisibility(View.VISIBLE);
 				    closeUnder.setVisibility(View.VISIBLE);
 				}
 				

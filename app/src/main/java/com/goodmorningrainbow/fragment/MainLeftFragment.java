@@ -285,10 +285,10 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		ratingLayout = (LinearLayout)mView.findViewById(R.id.ratingLayout);
 		ratingBar = (RatingBar)mView.findViewById(R.id.rating);
 		ratingCnt = (Button)mView.findViewById(R.id.rateAveCnt);
-		
+	/*
 		mAccessoryLayout = (RelativeLayout)mView.findViewById(R.id.accessory_layout);
 		mAccessoryClose = (ImageView)mView.findViewById(R.id.accessory_close);
-		
+		*/
 		init();
 		
 		return mView;
@@ -738,11 +738,11 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 
 			@Override
 			public boolean onEditorAction(TextView v, int actionId,
-					KeyEvent event) {
+										  KeyEvent event) {
 				if (actionId == EditorInfo.IME_ACTION_DONE) {
 
 					if (editText02.getText().length() == 0) {
-						Toast.makeText(mActivity, getString(R.string.no_number),Toast.LENGTH_SHORT).show();
+						Toast.makeText(mActivity, getString(R.string.no_number), Toast.LENGTH_SHORT).show();
 					} else {
 						isShowEdit = false;
 						aSupportTxt.setVisibility(View.VISIBLE);
@@ -772,7 +772,7 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 				}
 			}
 		});
-		
+		/*
 		//악세사리 광고 닫기
 		mAccessoryClose.setOnClickListener(new View.OnClickListener() {
 			
@@ -784,7 +784,7 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 				closeAccImg();
 			}
 		});
-		
+
 		//광고 이미지 클릭
 		mAccessoryLayout.setOnClickListener(new View.OnClickListener() {			
 			@Override
@@ -793,7 +793,7 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 					mActivity.moveToPage(Const.PAGE_ADVICE);
 				}				
 			}
-		});
+		});*/
 		
 		//단말기 지원 클릭
 		deviceModeBtn.setOnClickListener(new View.OnClickListener() {
@@ -833,26 +833,26 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 		rightAni.setRepeatMode(Animation.ABSOLUTE);
 		
 		rightAni.setAnimationListener(new AnimationListener() {
-			
+
 			@Override
 			public void onAnimationStart(Animation animation) {
-				mAccessoryLayout.setEnabled(false);
-				mAccessoryClose.setEnabled(false);
+				//			mAccessoryLayout.setEnabled(false);
+				//			mAccessoryClose.setEnabled(false);
 			}
-			
+
 			@Override
 			public void onAnimationRepeat(Animation animation) {
-				
+
 			}
-			
+
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				mAccessoryLayout.setVisibility(View.GONE);
-				mAccessoryClose.setVisibility(View.GONE);
+				//			mAccessoryLayout.setVisibility(View.GONE);
+				//			mAccessoryClose.setVisibility(View.GONE);
 			}
 		});
 		
-		mAccessoryLayout.startAnimation(rightAni);
+	//	mAccessoryLayout.startAnimation(rightAni);
 	}
 	
 	// 상단 초기화 및 통신사 선텍시 초기화
@@ -2381,8 +2381,8 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 
 			@Override
 			public void onAnimationStart(Animation animation) {
-				mAccessoryLayout.setVisibility(View.VISIBLE);
-				mAccessoryClose.setVisibility(View.VISIBLE);
+				//			mAccessoryLayout.setVisibility(View.VISIBLE);
+				//			mAccessoryClose.setVisibility(View.VISIBLE);
 			}
 
 			@Override
@@ -2391,12 +2391,12 @@ public class MainLeftFragment extends Fragment implements IOnHandlerMessage{
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				mAccessoryLayout.setEnabled(true);
-				mAccessoryClose.setEnabled(true);
+				//			mAccessoryLayout.setEnabled(true);
+				//			mAccessoryClose.setEnabled(true);
 			}
 		});
 
-		mAccessoryLayout.startAnimation(leftAni);
+	//	mAccessoryLayout.startAnimation(leftAni);
 
 		timer = new CountDownTimer(8000, 1000) {
 			@Override
